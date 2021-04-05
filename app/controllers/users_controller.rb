@@ -22,14 +22,27 @@ class UsersController < ApplicationController
     end
   end
 
-   def update
+  def update
+   @user = User.find(params[:id])
+   if @user.update(user_params)
+    flash[:notice] = "You have updated user successfully."
+    redirect_to user_path(@user.id)
+   else
+    render :edit
+   end
+  end
+
+   def following
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
-    else
-      render :edit
-    end
+    @users = @user.followings
+    @followings = @user.followings.all
+
+   end
+
+   def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    @followers = @user.followers.all
    end
 
   private
