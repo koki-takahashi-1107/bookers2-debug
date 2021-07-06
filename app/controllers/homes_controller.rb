@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
-  
-  layouts 'top'
-  
+
+  layout 'top'
+
   def top
   end
 
