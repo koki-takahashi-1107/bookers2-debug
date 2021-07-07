@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   post '/favorite/:id' => 'favorites#favorite', as: 'favorite'
 
-  
+   get '/search' => 'search#search'
+
 end
